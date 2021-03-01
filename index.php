@@ -57,12 +57,12 @@
         print("<td></td>");
     } elseif (is_file($dir.$files)) {
         print("<td>Failas </td>
-                <td>{$files}</td>
-                <td><form action='deletes.php' method='POST'> 
-                <input type='hidden' name='file_name' value='" . $files . "'>
-                <input type='submit' name='delete_file' value= 'delete'>
-                </form>
-                ");
+          <td>{$files}</td>
+          <td><form action='deletes.php' method='POST'> 
+          <input type='hidden' name='file_name' value='" . $files . "'>
+          <input type='submit' name='delete_file' value= 'delete'>
+          </form>
+          ");
     }
     print('</tr>'); 
   }
@@ -70,13 +70,9 @@
   ?>
    </table>
 
-   
-   
    <h2></h2>
    <!-- <button onclick=' " . mkdir('/sp1/' );  . " >Make directory</button> -->
-   <button onclick= "<?php mkdir("test3"); ?>" >Make directory</button>
-  
-   
+   <button onclick= "<?php mkdir("test3"); ?>" >Make directory</button>  
    
 </body>
 </html>
