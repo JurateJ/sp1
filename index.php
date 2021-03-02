@@ -28,15 +28,21 @@
 </style>
 </head>
 <body>
-  <h2></h2>
-  <button onclick="goBack()">Back</button>
-  <script>
-  function goBack() {
-    window.history.back();
-  }
-  </script>
+  
 
 <?php
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["name"])) {
+    $nameErr = "Name is required";
+  } else {
+    $name = test_input($_POST["name"]);
+    // check if name only contains letters and whitespace
+    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {
+      $nameErr = "Only letters and white space allowed";
+    }
+  }
+}
 
   $dir    = "./".$_GET['path'];
   $files1 = scandir($dir);
@@ -66,13 +72,21 @@
     }
     print('</tr>'); 
   }
-
+  
   ?>
    </table>
 
    <h2></h2>
-   <!-- <button onclick=' " . mkdir('/sp1/' );  . " >Make directory</button> -->
-   <button onclick= "<?php mkdir("test3"); ?>" >Make directory</button>  
+  <button onclick="goBack()">Back</button>
+  <script>
+  function goBack() {
+    window.history.back();
+  }
+  </script>
+
+   <h2></h2>
+   <input type="text" name="name" value="<?php $name;?>">
+   <button onclick= "<?php mkdir("name"); ?>" >Make directory</button>  
    
 </body>
 </html>
