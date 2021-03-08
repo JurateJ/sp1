@@ -85,7 +85,7 @@ $previous = "javascript:history.go(-1)";
 //make new directory
 if (isset($_POST['ndir'])) {
   if (is_dir($_POST['ndir'])) {
-    print('<div style="color: red;">The directory <i><b>' . $_POST['ndir'] . '</b></i> already exists</div>');
+    print('<div style="color: red;">Jau yra tokia  <i><b>' . $_POST['ndir'] . '</b></i> direktorija</div>');
   } else {
     mkdir("./" . $_GET['path'] . "/" .  $_POST['ndir']);
     header('Location: ' .  $_SERVER['REQUEST_URI']);
@@ -121,24 +121,24 @@ if (isset($_POST['ndir'])) {
 
 <?
 
-  foreach ($files1 as $files) {
-    print('<tr>');
-    if (is_dir($dir.$files)) {
-      print("<td>DIR </td>");
-      print('<td><a href=?path=' .  $_GET['path']  . urlencode($files) . '/>' . $files . '</a></td>');
-      print("<td></td>");
-    } elseif (is_file($dir.$files)) {
-      print("<td>Failas </td>
-      <td>{$files}</td>
-      <td><form action='' method='POST'> 
-      <button type='submit' name='delete' value='" . $files . "'>delete</button>
-      <td><form action='download' method='POST'> 
-      <button type='submit' name='download' value='" . $files . "'>download</button>
-      </form>          
-      ");    
-    }
-    print('</tr>'); 
+foreach ($files1 as $files) {
+  print('<tr>');
+  if (is_dir($dir.$files)) {
+    print("<td>DIR </td>");
+    print('<td><a href=?path=' .  $_GET['path']  . urlencode($files) . '/>' . $files . '</a></td>');
+    print("<td></td>");
+  } elseif (is_file($dir.$files)) {
+    print("<td>Failas </td>
+    <td>{$files}</td>
+    <td><form action='' method='POST'> 
+    <button type='submit' name='delete' value='" . $files . "'>delete</button>
+    <td><form action='download' method='POST'> 
+    <button type='submit' name='download' value='" . $files . "'>download</button>
+    </form>          
+    ");    
   }
+  print('</tr>'); 
+}
 ?>
   </table>
   <br>
